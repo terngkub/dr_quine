@@ -17,8 +17,14 @@ func main() {
 	str := %c%s%c
 	data := fmt.Sprintf(str, 96, str, 96)
 	ioutil.WriteFile("Grace_kid.go", []byte(data), 0644)
+	/*
+		Comment
+	*/
 }
 `
 	data := fmt.Sprintf(str, 96, str, 96)
 	ioutil.WriteFile("Grace_kid.go", []byte(data), 0644)
+	/*
+		Comment
+	*/
 }
