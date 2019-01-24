@@ -1,7 +1,7 @@
 #include <stdio.h>
 #define FILE_NAME "Grace_kid.c"
 #define WRITE "w"
-#define FUNC int main(void) {FILE *fp; char *str = "#include <stdio.h>%c#define FILE_NAME %cGrace_kid.c%c%c#define WRITE %cw%c%c#define FUNC int main(void) {FILE *fp; char *str = %c%s%c; fp = fopen(FILE_NAME, WRITE); fprintf(fp, str, 10, 34, 34, 10, 34, 34, 10, 34, str, 34, 10, 10, 10, 9, 10, 10); fclose(fp);}%cFUNC;%c/*%c%cComment%c*/%c"; fp = fopen(FILE_NAME, WRITE); fprintf(fp, str, 10, 34, 34, 10, 34, 34, 10, 34, str, 34, 10, 10, 10, 9, 10, 10); fclose(fp);}
+#define FUNC int main(void) {FILE *fp; char *str = "#include <stdio.h>%3$c#define FILE_NAME %4$cGrace_kid.c%4$c%3$c#define WRITE %4$cw%4$c%3$c#define FUNC int main(void) {FILE *fp; char *str = %4$c%1$s%4$c; fp = fopen(FILE_NAME, WRITE); fprintf(fp, str, str, 9, 10, 34); fclose(fp);}%3$cFUNC;%3$c/*%3$c%2$cComment%3$c*/%3$c"; fp = fopen(FILE_NAME, WRITE); fprintf(fp, str, str, 9, 10, 34); fclose(fp);}
 FUNC;
 /*
 	Comment
