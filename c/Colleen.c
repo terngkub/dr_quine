@@ -6,8 +6,8 @@
 
 void print_source(void)
 {
-	char *str = "#include <stdio.h>%c%c/*%c%cComment%c*/%c%cvoid print_source(void)%c{%c%cchar *str = %c%s%c;%c%cprintf(str, 10, 10, 10, 9, 10, 10, 10, 10, 10, 9, 34, str, 34, 10, 9, 10, 10, 10, 10, 10, 10, 9, 10, 10, 9, 10, 10);%c}%c%cint main(void)%c{%c/*%c%cComment%c*/%c%cprint_source();%c}%c";
-	printf(str, 10, 10, 10, 9, 10, 10, 10, 10, 10, 9, 34, str, 34, 10, 9, 10, 10, 10, 10, 10, 10, 9, 10, 10, 9, 10, 10);
+	char *str = "#include <stdio.h>%1$c%1$c/*%1$c%2$cComment%1$c*/%1$c%1$cvoid print_source(void)%1$c{%1$c%2$cchar *str = %3$c%4$s%3$c;%1$c%2$cprintf(str, 10, 9, 34, str);%1$c}%1$c%1$cint main(void)%1$c{%1$c/*%1$c%2$cComment%1$c*/%1$c%2$cprint_source();%1$c}%1$c";
+	printf(str, 10, 9, 34, str);
 }
 
 int main(void)
