@@ -1,3 +1,4 @@
+extern _strcmp
 extern _asprintf
 extern _printf
 extern _dprintf
@@ -14,21 +15,28 @@ _main:
 	sub		rsp, 160
 
 	; check integer
-	cmp		rax, 0
+	mov		eax, [rel i]
+	cmp		eax, 0
 	jle		exit
 
 	; check Sully.s
-	;dec 	rax
+	lea		rdi, [rel file]
+	lea		rsi, [rel sully]
+	call	_strcmp
+	cmp		rax, 0
+	jne		create_file_name
 
+	; decrement i
+	mov		rax, [rel i]
+	dec		rax
+	mov		[rel i], rax
+
+create_file_name:
 	; create filename
 	lea		rdi, [rsp]
 	lea		rsi, [rel filename]
 	mov		rdx, [rel i]
 	call	_asprintf
-
-	; debug - print filename
-	mov		rdi, [rsp]
-	call	_printf
 
 	; create file
 	mov		rdi, [rsp]
@@ -43,20 +51,16 @@ _main:
 	; write file
 	mov		rdi, [rsp+4]
 	lea		rsi, [rel format]
-	;lea		rdx, [rel format]
-	; mov		rcx, 10
-	; mov		r8, 9
-	; mov		r9, 34
+	lea		rdx, [rel format]
+	mov		rcx, 9
+	mov		r8, 10
+	mov		r9, 34
 	call	_dprintf
 
 	; close file
 	mov		rdi, [rsp+4]
 	mov		rax, 0x2000006
 	syscall
-
-	; ; compile
-
-	; run
 
 exit:
 	mov		rsp, rbp
@@ -66,7 +70,9 @@ exit:
 section .data
 
 i: dd 5
+file: db __FILE__, 0
+sully: db "Sully.s", 0
 filename: db "Sully_%d.s", 0
 format: db "abc", 0
-compile: db "clang -Wall -Wextra -Werror Sully_%d.c -o Sully_%d", 0
+compile: db "nasm -f macho64 Sully_%d.s -o Sully_%d.o && gcc -Wall -Wextra -Werror Sully_%d.o -o Sully_%d", 0
 run: db "./Sully_%d", 0
