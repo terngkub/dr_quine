@@ -19,6 +19,4 @@ char *str = "#include <libgen.h>%3$c#include <stdio.h>%3$c#include <stdlib.h>%3$
 fprintf(fp, str, str, i, 10, 34, 37);
 fclose(fp);
 system(compile);
-free(file_name);
-free(compile);
 }
