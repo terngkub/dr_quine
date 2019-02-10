@@ -72,7 +72,7 @@ ret
 
 section .data
 
-i: dd 10
+i: dd 5
 file: db __FILE__, 0
 sully: db "Sully.s", 0
 filename: db "Sully_%d.s", 0
